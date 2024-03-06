@@ -1,0 +1,5 @@
+top_k: -1
+method: mean-std # mean, std, mean/std
+
+
+str: method=${.method}/top_k=${.top_k}

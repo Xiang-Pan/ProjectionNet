@@ -1,0 +1,10 @@
+method: linear_probing
+domain: source
+seed: 0
+feature_source:
+  - y_projected
+  - s_projected
+target: y
+batch_size: 50000
+
+str: method=${.method}-feature_source=${.feature_source}-target=${.target}-seed=${.seed}

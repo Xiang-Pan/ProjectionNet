@@ -1,0 +1,22 @@
+defaults:
+  - optimizer: adam
+method: projectionnet
+projection_method: inverse
+batch_size: 32
+max_steps: -1
+max_epochs: 60
+seed: 0
+input_e: false
+use_fc_bias: false
+ye_orth_reg_scale: 10.0
+ys_orth_reg_scale: 1.0
+feature_source:
+  - y
+  - s
+  - e
+
+monitor: source_val_acc
+
+
+
+str: method=${.method}/batch_size=${.batch_size}/${.optimizer.str}/training_seed=${.seed}/use_fc_bias=${.use_fc_bias}/feature_source=${.feature_source}/projection_method=${.projection_method}

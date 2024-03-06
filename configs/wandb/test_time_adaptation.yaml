@@ -1,0 +1,13 @@
+entity: xiangpan-research
+project: test_time_adaptation
+enabled: true
+name: debug
+group: debug
+prefix: ""
+save_dir: outputs
+mode: parallel
+is_agent: false
+tags:
+  - 0.06
+  - domainbed
+  - linear_probing_seed

@@ -1,0 +1,17 @@
+name: officehome
+holdout_fraction: 0.2
+uda_holdout_fraction: 0
+class_balanced: false
+data_augmentation: true
+target_envs:
+  - 0
+full_domains:
+  - art
+  - clipart
+  - product
+  - real
+num_classes: 65
+num_envs: 4
+seed: 0
+mode: target_finetune # source_pretrain, target_finetune
+str: name=${.name}-target_envs=${.target_envs}-seed=${.seed}

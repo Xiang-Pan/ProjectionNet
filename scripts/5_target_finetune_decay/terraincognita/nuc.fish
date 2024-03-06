@@ -1,0 +1,21 @@
+#!/usr/bin/env fish
+#!/usr/bin/env fish
+python main.py -m \
+    mode=target_finetune \
+    indomain_test=true \
+    dataset=terraincognita \
+        dataset.target_envs='[0]','[1]','[2]','[3]' \
+        dataset.seed=0 \
+    pretrain=nuc \
+        pretrain.batch_size=32 \
+        pretrain.optimizer.lr=5e-5 \
+        pretrain.nuc_scale=1e-2,1e-1 \
+    training=nuc \
+        training.batch_size=32 \
+        training.optimizer.lr=5e-5 \
+        training.optimizer.feature_lr_scale=0.1 \
+        training.nuc_scale=0 \
+        training.seed='range(0,5)' \
+        training.max_epochs=10 \
+    fsl=0.1,0.2,0.4,0.6,0.8,1.0 \
+    server={$server} hydra/launcher={$server}

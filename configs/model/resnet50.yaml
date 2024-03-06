@@ -1,0 +1,4 @@
+type: resnet50
+
+
+str: type=${.type}

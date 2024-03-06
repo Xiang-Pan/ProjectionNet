@@ -1,0 +1,10 @@
+method: dann
+seed: 0
+monitor: source_val_acc
+batch_size: 32
+is_domainbed: true
+max_steps: 1
+max_epochs: 1
+input_e: false
+
+str: method=${.method}-batch_size=${.batch_size}-training_seed=${.seed}

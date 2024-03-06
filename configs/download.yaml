@@ -1,0 +1,60 @@
+# SLURM config
+defaults:
+  - wandb: test_time_adaptation
+  - dataset: officehome
+  - training: erm
+  - pretrain: default
+  - feature_selection: default
+  - model: resnet50
+  - server: greene
+  - override hydra/job_logging: colorlog
+  - override hydra/hydra_logging: colorlog
+  - _self_
+# seed: 0
+# trial_seed: 0
+debug: false
+num_workers: 4
+
+version: 0.01
+mode: source_pretrain 
+# model_selection: source_val_loss
+# source_pretrain
+# source_selection
+# feature_selection
+# target_finetune
+fsl: -1
+test_only: false
+indomain_test: false
+#! TODO: fix this
+# str_path:
+#   source_pretrain: ${dataset.str}/mode=source_pretrain/${model.str}/${pretrain.str}
+#   source_selection: ${dataset.str}/mode=source_selection/${model.str}/${feature_selection.str}
+#   feature_selection: ${dataset.str}/mode=feature_selection/${model.str}/${feature_selection.str}
+#   target_finetune: ${dataset.str}/mode=target_finetune/target_fsl=${target_fsl}/${feature_selection.str}/${model.str}/${pretrain.str}/${pretrain.monitor}/${training.str}
+#   str: ${dataset.str}/mode=${.mode}/${model.str}/${training.str}
+# paths:
+  # - source_pretrain: ${dataset.str}/mode=source_pretrain/${model.str}/${pretrain.str}
+  # - feature_extraction: ${dataset.str}/mode=feature_extraction/${model.str}/${pretrain.str}
+  
+feature_extraction_str: ${dataset.str}/mode=source_pretrain/${model.str}/${pretrain.str}
+feature_selection_str: ${dataset.str}/mode=source_pretrain/${model.str}/${pretrain.str}
+linear_probing_str: ${dataset.str}/mode=source_pretrain/${model.str}/${training.str}/fsl=${fsl}
+
+source_pretrain_str: ${dataset.str}/mode=source_pretrain/${model.str}/${pretrain.str}
+target_finetune_str: ${dataset.str}/mode=target_finetune/fsl=${fsl}/${feature_selection.str}/${model.str}/${pretrain.str}/${pretrain.monitor}/${training.str}
+str: ${dataset.str}/mode=${.mode}/${model.str}/${training.str}
+
+
+# output_dir: outputs/${.str}
+# ${{ if eq .mode "source_pretrain" }}
+
+__target__: main.py
+
+hydra:
+  mode: MULTIRUN
+  job:
+    chdir: false
+  run:  # don't put outputs in HOME, use SCRATCH instead
+    dir: ./logs/run/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweep:
+    dir: ./logs/sweep/${now:%Y-%m-%d}/${now:%H-%M-%S}

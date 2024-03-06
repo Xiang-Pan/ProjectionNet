@@ -1,0 +1,12 @@
+defaults:
+  - optimizer: adam
+method: default
+batch_size: 32
+max_steps: -1
+max_epochs: 60
+seed: 0
+input_e: false
+monitor: source_val_acc
+is_domainbed: false
+
+str: method=${.method}/batch_size=${.batch_size}/${.optimizer.str}/training_seed=${.seed}

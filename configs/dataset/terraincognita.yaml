@@ -1,0 +1,16 @@
+name: terraincognita
+holdout_fraction: 0.2
+uda_holdout_fraction: 0
+class_balanced: false
+data_augmentation: true
+target_envs:
+  - 0
+full_domains:
+  - L100
+  - L38
+  - L43
+  - L46
+num_classes: 10
+num_envs: 4
+seed: 0
+str: name=${.name}-target_envs=${.target_envs}-seed=${.seed}

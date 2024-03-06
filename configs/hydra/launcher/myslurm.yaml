@@ -1,0 +1,12 @@
+defaults:
+  - submitit_slurm
+
+gres: gpu:1            # use this on the nyu greene cluster instead of partition
+timeout_min: 240       # 4 hours
+tasks_per_node: 1
+cpus_per_task: 8    
+nodes: 1
+mem_gb: 32
+max_num_timeout: 0     # increase if you support requeuing / preemption
+gpus_per_node: null    # don't use this, use gres
+comment: null          # optionally use this to tell others on the cluster what your job is up to

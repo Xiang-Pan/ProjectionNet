@@ -1,0 +1,5 @@
+name: officehome
+data_root_folder: /mnt/sda/data
+
+num_classes: 10
+str: name=${.name}

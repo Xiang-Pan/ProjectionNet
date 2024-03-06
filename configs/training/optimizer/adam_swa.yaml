@@ -1,0 +1,10 @@
+name: adam
+lr: 5e-5
+swa: false
+swa_lrs: 1e-3
+swa_epoch_start: 0.8
+annealing_epochs: 5
+annealing_strategy: cosine
+swa_str: swa=${.swa}-swa_lrs=${.swa_lrs}-swa_epoch_start=${.swa_epoch_start}-annealing_epochs=${.annealing_epochs}-annealing_strategy=${.annealing_strategy}
+
+str: lr=${.lr}-${.swa_str}

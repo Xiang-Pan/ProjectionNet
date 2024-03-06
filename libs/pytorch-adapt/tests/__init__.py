@@ -1,0 +1,39 @@
+import os
+import sys
+
+import torch
+
+sys.path.insert(0, "src")
+import logging
+
+import pytorch_adapt
+from pytorch_adapt.utils import common_functions as c_f
+
+logging.basicConfig()
+logging.getLogger(c_f.LOGGER_NAME).setLevel(logging.INFO)
+
+
+c_f.LOGGER.info(
+    "testing pytorch_adapt version {} with pytorch version {}".format(
+        pytorch_adapt.__version__, torch.__version__
+    )
+)
+
+dtypes_from_environ = os.environ.get("TEST_DTYPES", "float16,float32,float64").split(
+    ","
+)
+device_from_environ = os.environ.get("TEST_DEVICE", "cuda")
+
+## THESE FOLDERS GET CREATED AND MAY BE DELETED AUTOMATICALLY DURING TESTING
+## DO NOT POINT THESE TO IMPORTANT FOLDERS
+TEST_FOLDER = "zzz_pytorch_adapt_test_folder"
+DATASET_FOLDER = "zzz_pytorch_adapt_dataset_test_folder"
+RUN_DATASET_TESTS = os.environ.get("RUN_DATASET_TESTS", False)
+RUN_DOMAINNET_DATASET_TESTS = os.environ.get("RUN_DOMAINNET_DATASET_TESTS", False)
+RUN_DOMAINNET126_DATASET_TESTS = os.environ.get("RUN_DOMAINNET126_DATASET_TESTS", False)
+RUN_PRETRAINED_SCORES_TESTS = os.environ.get("RUN_PRETRAINED_SCORES_TESTS", False)
+
+TEST_DTYPES = [getattr(torch, x) for x in dtypes_from_environ]
+TEST_DEVICE = torch.device(device_from_environ)
+
+c_f.LOGGER.info(f"Testing {TEST_DTYPES} on {TEST_DEVICE}")

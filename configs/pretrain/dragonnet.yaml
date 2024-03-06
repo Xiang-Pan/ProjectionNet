@@ -1,0 +1,12 @@
+defaults:
+  - optimizer: adam
+method: dragonnet
+batch_size: 32
+max_steps: -1
+max_epochs: 60
+avg_method: avg # avg loss_weighted_avg 
+seed: 0
+input_e: true
+use_fc_bias: false
+
+str: method=${.method}/batch_size=${.batch_size}/${.optimizer.str}/training_seed=${.seed}/use_fc_bias=${.use_fc_bias}
