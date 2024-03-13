@@ -1,4 +1,4 @@
-E ProjectionNet
+# ProjectionNet
 
 dataset = [officehome, pacs, terraincognite, vlcs]
 method = erm, projectionnet, nuc.
