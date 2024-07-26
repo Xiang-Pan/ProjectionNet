@@ -1,7 +1,15 @@
 # ProjectionNet
+<!-- figure/image.png -->
 
-dataset = [officehome, pacs, terraincognite, vlcs]
-method = erm, projectionnet, nuc.
+
+![image](./figures/image.png)
+
+![image](./figures/arch.png)
+
+
+dataset $\in$ [officehome, pacs, terraincognite, vlcs].
+
+method $\in$ [erm, projectionnet, nuc].
 
 You can use [DomainBed](https://github.com/facebookresearch/DomainBed) and [DiWA](https://github.com/alexrame/diwa) to get the DANN and DiWA models in pretraining and run the subsequent pipelines.
 
