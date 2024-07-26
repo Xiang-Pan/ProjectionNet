@@ -1,5 +1,5 @@
 # ProjectionNet
-<!-- figure/image.png -->
+Code for ["Bridging Domains with Approximately Shared Features"](https://arxiv.org/pdf/2403.06424).
 
 
 ![image](./figures/image.png)
